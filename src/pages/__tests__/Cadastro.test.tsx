@@ -24,10 +24,9 @@ describe('Cadastro Page', () => {
     expect(button).toBeDisabled();
   });
 
-  describe('deve validar o formato de e-mail no cadastro', () => {
-    
-  });
+  it('deve validar o formato de e-mail no cadastro', () => {
 
+  });
 
   describe('deve validar os critérios de aceitação da senha', () => {
     let input: HTMLElement;
@@ -71,21 +70,10 @@ describe('Cadastro Page', () => {
     });
   });
 
-  it('deve garantir que senha e confirmação sejam iguais', () => {
-  });
+  it('deve garantir que senha e confirmação sejam iguais', () => {});
 
   it('deve enviar o formulário se todos os dados estiverem preenchidos corretamente', () => {
-    //deve enviar o formulário se todos os dados estiverem preenchidos corretamente
-    //setup
-    const nome = faker.name.firstName();
-    const email = faker.internet.email();
-    const senha = faker.internet.password();
-    const confirmacao = senha;
-    //expects
-    setValorInput(screen.getByPlaceholderText('Nome'), nome);
-    setValorInput(screen.getByPlaceholderText('e-mail'), email);
-    setValorInput(screen.getByPlaceholderText('Senha'), senha);
-    setValorInput(screen.getByPlaceholderText('Confirmação de Senha'), confirmacao);
+
   });
 
   it('deve notificar o usuário que o cadastro foi efetuado com sucesso', () => {
@@ -119,55 +107,5 @@ describe('Cadastro Page', () => {
     );
   });
 
-  it('deve apresentar os erros de validação para o usuário, caso a API retorne erro', () => {
-    // setup
-    jest.spyOn(axios, 'post').mockRejectedValue({
-      response: {
-        data: {
-          errors: [
-            {
-              field: 'nome',
-              message: 'Nome é obrigatório'
-            },
-            {
-              field: 'email',
-              message: 'E-mail é obrigatório'
-            },
-            {
-              field: 'senha',
-              message: 'Senha é obrigatório'
-            },
-            {
-              field: 'confirmacaoSenha',
-              message: 'Confirmação de senha é obrigatório'
-            },
-            {
-              field: 'codigoAcesso',
-              message: 'Código de acesso é obrigatório'
-            }
-          ]
-        }
-      }
-    });
-    const nome = screen.getByPlaceholderText('Nome');
-    const email = screen.getByPlaceholderText('e-mail');
-    const senha = screen.getByPlaceholderText('Senha');
-    const confirmacaoSenha = screen.getByPlaceholderText('Confirmação de Senha');
-    const codigoAcesso = screen.getByPlaceholderText('Código de Acesso');
-    const botao = screen.getByText('Cadastrar');
-    const dados = {
-      nome: faker.name.firstName(),
-      email: faker.internet.email(),
-      senha: 'S3nh@!123',
-      codigoAcesso: faker.lorem.paragraph(),
-    };
-
-    // construcao
-    setValorInput(nome, dados.nome);
-    setValorInput(email, dados.email);
-    setValorInput(senha, dados.senha);
-    setValorInput(confirmacaoSenha, dados.senha);
-    setValorInput(codigoAcesso, dados.codigoAcesso);
-    botao.click();
-  });
+  it('deve apresentar os erros de validação para o usuário, caso a API retorne erro', () => {});
 });
